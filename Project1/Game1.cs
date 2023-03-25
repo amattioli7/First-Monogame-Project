@@ -10,6 +10,8 @@ namespace Project1
         private SpriteBatch _spriteBatch;
 
         Texture2D ballTexture;
+        Vector2 ballPosition;
+        float ballSpeed;
 
         public Game1()
         {
@@ -21,6 +23,8 @@ namespace Project1
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            ballPosition = new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2);
+            ballSpeed = 100f;
 
             base.Initialize();
         }
@@ -49,7 +53,7 @@ namespace Project1
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
-            _spriteBatch.Draw(ballTexture, new Vector2(0, 0), Color.White);
+            _spriteBatch.Draw(ballTexture, ballPosition, null, Color.White, 0f, new Vector2(ballTexture.Width / 2, ballTexture.Height / 2), Vector2.One, SpriteEffects.None, 0f);
             _spriteBatch.End();
 
             base.Draw(gameTime);
