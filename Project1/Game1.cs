@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Project1.Netcode;
 
 namespace Project1
 {
@@ -25,6 +26,15 @@ namespace Project1
             // TODO: Add your initialization logic here
             ballPosition = new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2);
             ballSpeed = 100f;
+
+            // Initialize the server
+            Server.Start(4, 26950);
+
+            // Get an instance to the singleton GameClient object
+            GameClient g = GameClient.GetGameClientInstance();
+
+            // Connect the GameClient to the Server
+            g.ConnectToServer();
 
             base.Initialize();
         }
